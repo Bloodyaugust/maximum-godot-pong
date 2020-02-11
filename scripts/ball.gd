@@ -11,6 +11,9 @@ onready var _velocity: Vector2 = Vector2(rand_range(-1, -3), rand_range(-1, 1))
 func _on_area2d_entered(area2d):
   _velocity.x *= -1
 
+func _ready():
+  _area2d.connect("area_entered", self, "_on_area2d_entered")
+
 func _reset():
   _velocity = Vector2(rand_range(-1, -3), rand_range(-1, 1))
   position = Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
